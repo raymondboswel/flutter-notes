@@ -1,0 +1,81 @@
+#+TITLE: Flutter notes
+#+AUTHOR: Raymond Boswel
+#+BABEL: :cache yes
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{inconsolata}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+
+* Layouts
+Everything is a widget, including layout widgets, rows, columns etc.
+
+- Container widgets allow you to customize the container's child, to add margins,
+padding, et al.
+
+- The visual layout of widgets can be viewed by setting 
+debugPaintSizeEnabled
+
+- More in depth debugging can be done with the flutter inspector
+
+- Arranging items vertically and horizontally can be accomplished using Row and
+Column widgets
+
+** Aligning widgets
+Column and row widgets have mainAxisAlignment and crossAxisAlignment properties
+to allow configuration of alignment properties. These properties correspond
+roughly to the flexbox alignment properties.
+
+** Sizing Widgets
+Widgets can be resized to fit within a row/column by using the Expanded widget.
+To make a widget occupy more space than its siblings you can set the flex
+property.
+
+** Packing Widgets
+By default a row or column occupies as much as possible space along its main
+axis. This can be changed by setting mainAxisSize to MainAxisSize.min
+
+** Nesting
+Row and column widgets can be nested as deeply as required to implement the
+design.
+
+Tip: To minimize the visual confusion that can result from heavily nested
+layout code, implement pieces of the UI in variables and functions.
+
+** Common layout widgets
+A full list of widgets can be found in the flutter widget catalog. 
+
+*** Standard widgets
+**** Container 
+- Adds padding margin, borders, background color or other decorations
+- Contains a single child widget, which can be an entire widget tree  
+**** Gridview
+- Lays widgets out in a scrollable grid (two-dimensional list)
+- GridView.count: specify the number of columns
+- GridView.count: specify the maximum px width of a column
+- Use Table or DataTable if it is important where a cell is placed
+
+**** ListView
+- Lays widgets out in a scrollable list
+- A specialized Column for organizing a list of boxes
+- Can be laid out horizontally or vertically
+- Detects when its content won’t fit and provides scrolling
+- Less configurable than Column, but easier to use and supports scrolling
+
+**** Stack 
+- Overlaps a widget on top of another
+- The first widget in the list of children is the base widget; subsequent
+children are overlaid on top of that base widget
+- A Stack’s content can’t scroll
+- You can choose to clip children that exceed the render box
+
+
+*** Material widgets:
+- Card
+  Organizes related info into a box with rounded corners and a drop shadow
+- ListTile
+  Organizes up to 3 lines of text, and optional leading and trailing icons, into a row.
+
+
+
+* Images 
+Images that are local (Image.asset) must be added to the pubspec.yaml file.
+This is not necessary for Online images (Image.network)
