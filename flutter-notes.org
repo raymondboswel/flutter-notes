@@ -75,6 +75,55 @@ children are overlaid on top of that base widget
   Organizes up to 3 lines of text, and optional leading and trailing icons, into a row.
 
 
+** Responsive layouts
+Two basic approaches in flutter.
+
+*** Use the LayoutBuilder class
+From its builder property, you get a BoxConstraints object. Examine the 
+constraint’s properties to decide what to display. For example, if your
+maxWidth is greater than your width breakpoint, return a Scaffold object 
+with a row that has a list on the left. If it’s narrower, return a Scaffold 
+object with a drawer containing that list. You can also adjust your display 
+based on the device’s height, the aspect ratio, or some other property. 
+When the constraints change (for example, the user rotates the phone, or puts
+ your app into a tile UI in Nougat), the build function runs.
+*** Use the MediaQuery.of() method in your build functions
+This gives you the size, orientation, etc, of your current app. This is more 
+useful if you want to make decisions based on the complete context rather than
+ on just the size of your particular widget. Again, if you use this, then your
+ build function automatically runs if the user somehow changes the app’s size.
+
+Other useful widgets and classes for creating a responsive UI:
+
+- AspectRatio
+- CustomSingleChildLayout
+- CustomMultiChildLayout
+- FittedBox
+- FractionallySizedBox
+- LayoutBuilder
+- MediaQuery
+- MediaQueryData
+- OrientationBuilder
+
+Also see:
+[[https://medium.com/flutter-community/developing-for-multiple-screen-sizes-and-orientations-in-flutter-fragments-in-flutter-a4c51b849434][Developing for Multiple Screen Sizes and Orientations in Flutter]]
+[[https://medium.com/flutter-community/build-responsive-uis-in-flutter-fd450bd59158][Build Responsive UIs in Flutter]]
+[[https://medium.com/flutter-community/making-cross-platform-flutter-landing-page-responsive-7fffe0655970][Making Cross-platform Flutter Landing Page Responsive]]
+[[https://stackoverflow.com/questions/49704497/how-to-make-flutter-app-responsive-according-to-different-screen-size][How to make flutter app responsive according to different screen size?]]
+
+* Stateful vs Stateless Widgets
+- A stateful widget is implemented by two classes: a subclass of StatefulWidget
+and a subclass of State.
+- A stateful widget is implemented by two classes: a subclass of StatefulWidget
+and a subclass of State.
+- When the widget’s state changes, the state object calls setState(), telling
+the framework to redraw the widget.
+- If in doubt, start by managing state in the parent widget.
+
+- A stateless widget is implemented by subclassing StatelessWidget
+
+
+
 
 * Images 
 Images that are local (Image.asset) must be added to the pubspec.yaml file.
